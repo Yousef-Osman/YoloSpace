@@ -9,12 +9,17 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a href="#" class="nav-item nav-link active">Home</a>
+                <a href="#" class="nav-item nav-link active" routerLink="">Home</a>
                 <a href="#" class="nav-item nav-link">Profile</a>
                 <a href="#" class="nav-item nav-link">Messages</a>
             </div>
-            <div class="navbar-nav ml-auto">
-                <a href="#" class="nav-item nav-link">Login</a>
+            <div class="navbar-nav ml-auto" *ngIf="!loggedin()">
+                <a href="#" class="nav-item nav-link" routerLink="login">Login</a>
+                <a href="#" class="nav-item nav-link" routerLink="register">Register</a>
+            </div>
+
+            <div class="navbar-nav ml-auto" *ngIf="loggedin()">
+                <a href="#" class="nav-item nav-link" (click)="logout()" routerLink="">Logout</a>
             </div>
         </div>
     </div>
