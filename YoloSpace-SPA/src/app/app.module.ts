@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 //services
 import { ValuesService } from './services/values.service';
@@ -30,7 +32,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [
     ValuesService,
@@ -39,4 +43,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+// export class AppModule(){}
