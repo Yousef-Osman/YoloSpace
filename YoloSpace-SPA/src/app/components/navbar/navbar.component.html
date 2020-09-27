@@ -12,15 +12,38 @@
                 <a href="#" class="nav-item nav-link active" routerLink="">Home</a>
                 <a href="#" class="nav-item nav-link">Profile</a>
                 <a href="#" class="nav-item nav-link">Messages</a>
+                <a href="#" class="nav-item nav-link" (click)="logout()" routerLink="" *ngIf="loggedIn()">Logout</a>
             </div>
-            <div class="navbar-nav ml-auto" *ngIf="!loggedin()">
+            <div class="navbar-nav ml-auto" *ngIf="!loggedIn()">
                 <a href="#" class="nav-item nav-link" routerLink="login">Login</a>
                 <a href="#" class="nav-item nav-link" routerLink="register">Register</a>
             </div>
 
-            <div class="navbar-nav ml-auto" *ngIf="loggedin()">
-                <a href="#" class="nav-item nav-link" (click)="logout()" routerLink="">Logout</a>
+            <div class="navbar-nav ml-auto" *ngIf="loggedIn()">
+                <!-- <div ngbDropdown class="d-inline-block">
+                    <button class="text-light" id="dropdownBasic1" ngbDropdownToggle>Welcome {{userName}}</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem>Action - 1</button>
+                        <button ngbDropdownItem>Another Action</button>
+                    </div>
+                </div> -->
+
+
+                <div class="dropdown">
+                    <a class="dropdown-toggle text-light" id="dropdownMenuLink">
+                      Welcome {{userName | titlecase}}
+                    </a>
+                  
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="#">Edit Profile</a>
+                      <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                  </div>
             </div>
+
+            <!-- <div class="navbar-nav ml-auto" *ngIf="loggedIn()">
+                <a href="#" class="nav-item nav-link" (click)="logout()" routerLink="">Logout</a>
+            </div> -->
         </div>
     </div>
 </nav>

@@ -4,17 +4,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
+//services
+import { ValuesService } from './services/values.service';
+import { AuthService } from './services/auth.service';
+import { AlertifyService } from './services/alertify.service';
+
 //components
 import { AppComponent } from './app.component';
 import { TestComponent } from './components/test/test.component';
-
-//services
-import { ValuesService } from './services/values.service';
-import { LoginComponent } from './components/login/login.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { AuthService } from './services/auth.service';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HomeComponent } from './components/home/home.component';
   ],
   providers: [
     ValuesService,
-    AuthService
+    AuthService,
+    AlertifyService
   ],
   bootstrap: [AppComponent]
 })
