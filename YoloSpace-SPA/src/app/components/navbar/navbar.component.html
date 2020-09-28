@@ -9,10 +9,11 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a class="nav-item nav-link pointer" routerLink="">Home</a>
-                <a class="nav-item nav-link pointer" *ngIf="loggedIn()">Friends</a>
-                <a class="nav-item nav-link pointer" *ngIf="loggedIn()">Messages</a>
+                <a class="nav-item nav-link pointer" routerLink="" routerLinkActive="router-link-active">Home</a>
+                <a class="nav-item nav-link pointer" routerLink="friends" routerLinkActive="router-link-active" *ngIf="loggedIn()">Friends</a>
+                <a class="nav-item nav-link pointer" routerLink="messages" routerLinkActive="router-link-active" *ngIf="loggedIn()">Messages</a>
             </div>
+            
             <div class="navbar-nav ml-auto" *ngIf="!loggedIn()">
                 <a href="#" class="nav-item nav-link" routerLink="login">Login</a>
                 <a href="#" class="nav-item nav-link" routerLink="register">Register</a>

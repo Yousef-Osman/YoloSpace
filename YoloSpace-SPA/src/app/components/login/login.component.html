@@ -11,7 +11,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!loginForm.valid">Sign in</button>
             </div>
-            <p><a class="text-primary" routerLink="register">Create an Account</a></p>
+            <p><a class="text-primary curser-pointer" (click)="redirectToRegister()">Create an Account</a></p>
         </form>
     </div>
 </section>
