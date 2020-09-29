@@ -12,5 +12,6 @@ namespace YoloSpaceAPI.Models.Data
             : base(options) { }
 
         public DbSet<ApplicationUser> Users { get; set; }
+        public DbSet<Photo> Photos { get; set; }
     }
 }

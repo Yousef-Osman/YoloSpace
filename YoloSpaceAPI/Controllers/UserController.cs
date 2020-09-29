@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace YoloSpaceAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
