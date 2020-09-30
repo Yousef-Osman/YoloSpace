@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using YoloSpaceAPI.Models;
 using YoloSpaceAPI.Models.Data;
+using YoloSpaceAPI.Repositories.Interfaces;
 
 namespace YoloSpaceAPI.Repositories
 {

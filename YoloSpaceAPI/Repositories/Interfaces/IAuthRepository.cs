@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using YoloSpaceAPI.Models;
 
-namespace YoloSpaceAPI.Repositories
+namespace YoloSpaceAPI.Repositories.Interfaces
 {
     public interface IAuthRepository
     {

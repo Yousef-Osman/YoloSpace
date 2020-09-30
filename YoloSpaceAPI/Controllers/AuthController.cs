@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using YoloSpaceAPI.DTOs;
 using YoloSpaceAPI.Models;
 using YoloSpaceAPI.Repositories;
+using YoloSpaceAPI.Repositories.Interfaces;
 
 namespace YoloSpaceAPI.Controllers
 {
@@ -19,12 +20,12 @@ namespace YoloSpaceAPI.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthRepository _authRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _config;
 
-        public AuthController(IAuthRepository authRepository, IConfiguration config)
+        public AuthController(IUnitOfWork unitOfWork, IConfiguration config)
         {
-            _authRepository = authRepository;
+            _unitOfWork = unitOfWork;
             _config = config;
         }
 
@@ -33,7 +34,7 @@ namespace YoloSpaceAPI.Controllers
         {
             registerDTO.Username = registerDTO.Username.ToLower();
 
-            var exsists = await _authRepository.UserExists(registerDTO.Username);
+            var exsists = await _unitOfWork.AuthRepository.UserExists(registerDTO.Username);
             if (exsists) return BadRequest("User aleardy exists");
 
             var user = new ApplicationUser()
@@ -41,7 +42,7 @@ namespace YoloSpaceAPI.Controllers
                 Username = registerDTO.Username
             };
 
-            await _authRepository.Register(user, registerDTO.Password);
+            await _unitOfWork.AuthRepository.Register(user, registerDTO.Password);
 
             return StatusCode(201);
         }
@@ -49,7 +50,7 @@ namespace YoloSpaceAPI.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginDTO loginDTO)
         {
-            var user = await _authRepository.Login(loginDTO.Username, loginDTO.Password);
+            var user = await _unitOfWork.AuthRepository.Login(loginDTO.Username, loginDTO.Password);
 
             if (user == null) return Unauthorized();
 
