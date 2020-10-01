@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using YoloSpaceAPI.Models;
 using YoloSpaceAPI.Models.Data;
 using YoloSpaceAPI.Repositories.Interfaces;
+using Z.EntityFramework.Plus;
 
 namespace YoloSpaceAPI.Repositories
 {
@@ -15,14 +16,12 @@ namespace YoloSpaceAPI.Repositories
 
         public async Task<ApplicationUser> GetUserAndPhotoAsync(int id)
         {
-            //return await _context.Users.Include(a => a.Photos.FirstOrDefault(b => b.IsMain == true)).FirstOrDefaultAsync(a => a.Id == id);
-            return await _context.Users.FirstOrDefaultAsync(a => a.Id == id);
+            return await _context.Users.Include(a => a.Photos).FirstOrDefaultAsync(a => a.Id == id);
         }
 
         public async Task<IEnumerable<ApplicationUser>> GetUsersAndPhotosAsync()
         {
-            //return await _context.Users.Include(a => a.Photos.FirstOrDefault(b => b.IsMain == true)).ToListAsync();
-            return await _context.Users.ToListAsync();
+            return await _context.Users.IncludeFilter(a => a.Photos.Where(b => b.IsMain == true)).ToListAsync();
         }
     }
 }

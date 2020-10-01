@@ -16,6 +16,8 @@ using YoloSpaceAPI.Models;
 using YoloSpaceAPI.Models.Data;
 using YoloSpaceAPI.Repositories;
 using YoloSpaceAPI.Repositories.Interfaces;
+using AutoMapper;
+using YoloSpaceAPI.DTOs;
 
 namespace YoloSpaceAPI
 {
@@ -38,6 +40,8 @@ namespace YoloSpaceAPI
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            services.AddAutoMapper(typeof(LoginDTO).Assembly);
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
