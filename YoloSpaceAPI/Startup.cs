@@ -18,6 +18,7 @@ using YoloSpaceAPI.Repositories;
 using YoloSpaceAPI.Repositories.Interfaces;
 using AutoMapper;
 using YoloSpaceAPI.DTOs;
+using YoloSpaceAPI.Hubs;
 
 namespace YoloSpaceAPI
 {
@@ -58,6 +59,7 @@ namespace YoloSpaceAPI
 
             services.AddCors();
             services.AddControllers();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +78,7 @@ namespace YoloSpaceAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chathub");
             });
         }
     }

@@ -13,7 +13,7 @@ using YoloSpaceAPI.Repositories.Interfaces;
 
 namespace YoloSpaceAPI.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
